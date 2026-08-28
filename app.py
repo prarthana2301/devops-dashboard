@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 # Version is read from an env var so later, when we add Docker/CI/CD,
 # we can bump this on every build without touching code (e.g. git commit hash).
-APP_VERSION = os.environ.get("APP_VERSION", "0.1.0")
+APP_VERSION = os.environ.get("APP_VERSION", "0.2.0")
 ENVIRONMENT = os.environ.get("APP_ENV", "development")
 
 
