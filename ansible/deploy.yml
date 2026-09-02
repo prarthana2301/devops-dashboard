@@ -1,0 +1,19 @@
+---
+- name: Deploy DevOps Dashboard
+  hosts: webserver
+  become: true
+
+  tasks:
+
+    - name: Pull latest Docker image
+      ansible.builtin.command:
+        cmd: docker pull sriprarthana23/devops-dashboard:latest
+
+    - name: Remove old container
+      ansible.builtin.command:
+        cmd: docker rm -f devops-dashboard-container
+      failed_when: false
+
+    - name: Start new container
+      ansible.builtin.command:
+        cmd: docker run -d --name devops-dashboard-container -p 5000:5000 sriprarthana23/devops-dashboard:latest
